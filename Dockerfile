@@ -1,6 +1,6 @@
 FROM ubuntu
 
-MAINTAINER Bram <bram-dockerfiles-ngrep@grmbl.net>
+MAINTAINER Bram <bram-dockerfiles-postfix-dovecot@grmbl.net>
 
 ENV         DEBIAN_FRONTEND noninteractive
 RUN         dpkg-divert --local --rename --add /sbin/initctl && ln -sf /bin/true /sbin/initctl
@@ -9,8 +9,6 @@ RUN apt-get update && apt-get -y install openssh-server rsyslog sqlite3 mysql-cl
 	dovecot-core dovecot-antispam dovecot-mysql dovecot-sqlite dovecot-imapd dovecot-pop3d dovecot-sieve dovecot-managesieved \
 	amavisd-new spamassassin spamc pyzor razor 
 RUN apt-get install -y clamav clamav-base clamav-daemon clamav-freshclam clamassassin 
-
-CMD touch /var/log/mail.log
 
 EXPOSE 22 25 110 143 587
 

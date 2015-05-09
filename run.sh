@@ -4,6 +4,7 @@
 # clean up 
 find /var/run/ -name '*.pid' -exec rm {} \;
 [ -f /etc/mailname ] || /bin/hostname > /etc/mailname
+touch /var/log/mail.log
 
 # trap stuff when existing
 trap "find /var/run/ -name '*.pid' -exec rm {} \;; kill -1 -1;kill -12 -1;kill -10 -1;kill -15 -1" SIGHUP SIGINT SIGQUIT SIGTERM
